@@ -28,7 +28,10 @@ const server = createServer(async (req, res) => {
     return;
   }
 
-  if (process.env.NODE_ENV === 'production' && !authorizePreview(req, res)) return;
+  // Google-authenticated API routes use a Bearer token. Let those requests reach
+  // authenticatedUser() instead of challenging them with HTTP Basic auth, which
+  // would prompt the browser again because a request can only carry one auth scheme.
+  if (process.env.NODE_ENV === 'production' && !isGoogleProtectedApi(req, url) && !authorizePreview(req, res)) return;
 
   if (req.method === 'GET' && url.pathname === '/api/config') {
     sendJson(res, 200, { googleClientId: process.env.GOOGLE_CLIENT_ID || '' });
@@ -71,6 +74,11 @@ const server = createServer(async (req, res) => {
     sendJson(res, 404, { error: 'No encontrado.' });
   }
 });
+
+function isGoogleProtectedApi(req, url) {
+  return (req.method === 'GET' && ['/api/auth/me', '/api/projects'].includes(url.pathname))
+    || (req.method === 'POST' && url.pathname === '/api/requests');
+}
 
 // Cloud Run injects PORT and routes traffic to the container interface.
 server.listen(port, '0.0.0.0', () => {
