@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: cat-comunicaciones-preview
+    runtime: node
+    plan: free
+    buildCommand: npm ci
+    startCommand: npm start
+    healthCheckPath: /healthz
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PREVIEW_ACCESS_USER
+        value: cat
+      - key: PREVIEW_ACCESS_PASSWORD
+        sync: false
+      - key: GOOGLE_CLIENT_ID
+        sync: false
+      - key: TRELLO_API_KEY
+        sync: false
+      - key: TRELLO_TOKEN
+        sync: false
+      - key: TRELLO_LIST_ID
+        value: 6ac690bdaabae1197ab5e9d0
+      - key: TRELLO_BOARD_ID
+        value: 6ac690bdaabae1197ab5e9ca

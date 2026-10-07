@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#f4f5ee" />
+  <title>CAT Comunicaciones | Centro de solicitudes</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="overrides.css" />
+  <script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="#inicio" aria-label="CAT Comunicaciones, inicio">
+        <img class="brand-logo" src="cat-logo-color.png" alt="Logotipo del Colegio Americano de Torreón" />
+        <span class="brand-copy"><strong>CAT</strong><small>COMUNICACIONES</small></span>
+      </a>
+      <div class="workspace-label">ESPACIO DE TRABAJO</div>
+      <nav class="main-nav" aria-label="Navegación principal">
+        <button class="nav-item active" data-view="inicio" aria-label="Inicio" title="Inicio"><span class="nav-icon">⌂</span><span>Inicio</span></button>
+        <button class="nav-item" data-view="solicitudes" aria-label="Solicitar un proyecto" title="Solicitar un proyecto"><span class="nav-icon">＋</span><span>Solicitar un proyecto</span></button>
+        <button class="nav-item" data-view="estatus" aria-label="Mis proyectos" title="Mis proyectos"><span class="nav-icon">◷</span><span>Mis proyectos</span></button>
+        <button class="nav-item" data-view="portafolio" aria-label="Portafolio" title="Portafolio"><span class="nav-icon">▦</span><span>Portafolio</span></button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="help-card"><div class="help-spark">✳</div><strong>¿Tienes una idea?</strong><p>Estamos aquí para ayudarte a darle forma.</p><button data-go="solicitudes">Cuéntanos más <span>↗</span></button></div>
+        <div class="profile"><div class="avatar" id="sidebar-avatar">CAT</div><div><strong id="sidebar-user-name">Personal CAT</strong><small id="sidebar-user-email">Inicia sesión para solicitar</small></div></div>
+      </div>
+    </aside>
+    <main class="main-area">
+      <header class="topbar"><div class="topbar-start"><button class="sidebar-toggle" id="sidebar-toggle" type="button" aria-label="Contraer menú lateral" aria-expanded="true" title="Contraer menú lateral"><span></span><span></span><span></span></button><div class="crumb"><span>CAT</span><b>/</b><span id="crumb-current">Inicio</span></div></div><div class="top-actions"><div id="google-signin" class="google-signin"></div><div id="user-menu" class="user-menu" hidden><img id="user-picture" alt=""/><span id="user-name"></span><button id="signout-button" type="button">Salir</button></div></div></header>
+      <div class="page-content" id="page-content"></div>
+    </main>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>
